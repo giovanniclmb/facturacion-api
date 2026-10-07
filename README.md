@@ -31,14 +31,14 @@ Cliente HTTP → FacturaRestController → FacturaService → EntityManager → 
 | --- | --- | --- |
 | `FacturaRestController` | `controller` | Recibe el GET, convierte los parámetros y devuelve JSON |
 | `FacturaService` | `service` | Arma la JPQL según los filtros recibidos y la ejecuta |
-| `FacturaReporteDTO` | `dto` | Datos resumidos de cada factura para el reporte |
+| `FacturaReporteDto` | `dto` | Datos resumidos de cada factura para el reporte |
 | Entidades JPA | `model` | Modelo de dominio (14 entidades, migradas de `javax` a `jakarta`) |
 
 ## Endpoint
 
 ### `GET /api/facturas`
 
-Devuelve una lista de `FacturaReporteDTO`. Todos los parámetros son opcionales
+Devuelve una lista de `FacturaReporteDto`. Todos los parámetros son opcionales
 y se combinan con `AND`.
 
 | Parámetro | Tipo | Descripción |
@@ -88,13 +88,9 @@ git clone https://github.com/giovanniclmb/facturacion-api.git
 cd facturacion-api
 ```
 
-**2. Configurar la conexión.** El usuario se ajusta en
-`src/main/resources/application.properties`; la clave se lee de una variable
-de entorno:
-
-```bash
-export DB_PASSWORD=tu_clave
-```
+**2. Configurar la conexión.** Ajustar usuario y clave de PostgreSQL en
+`src/main/resources/application.properties` (propiedades
+`spring.datasource.username` y `spring.datasource.password`).
 
 **3. Ejecutar:**
 
